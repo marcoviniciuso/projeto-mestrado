@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="MestradoService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Paciente" EntityType="MestradoService.Paciente">
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="Paciente"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="Paciente">
+                <Key>
+                    <PropertyRef Name="id"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="id" Type="Edm.String" Nullable="false"/>
+                <Property Name="record_id" Type="Edm.String"/>
+                <Property Name="cod_hosp" Type="Edm.String"/>
+                <Property Name="code_access" Type="Edm.Int32"/>
+                <Property Name="npac" Type="Edm.Int32"/>
+                <Property Name="registro_hsl" Type="Edm.String"/>
+                <Property Name="nome" Type="Edm.String"/>
+                <Property Name="sexo_ID" Type="Edm.Int32"/>
+                <Property Name="dt_nasc" Type="Edm.Date"/>
+                <Property Name="idade_old_sys" Type="Edm.Int32"/>
+                <Property Name="idade" Type="Edm.Int32"/>
+                <Property Name="peso" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="altura" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="imc" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="dt_int_hosp" Type="Edm.Date"/>
+                <Property Name="dt_int_hosp_test01" Type="Edm.String"/>
+                <Property Name="dt_cirurgia" Type="Edm.Date"/>
+                <Property Name="dt_int_uti" Type="Edm.Date"/>
+                <Property Name="dt_alta_uti" Type="Edm.Date"/>
+                <Property Name="dt_alta_hosp" Type="Edm.Date"/>
+                <Property Name="obito_ID" Type="Edm.Int32"/>
+                <Property Name="dt_obito" Type="Edm.Date"/>
+                <Property Name="local_obito_ID" Type="Edm.Int32"/>
+                <Property Name="tempo_pre_op" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="tempo_pos_op" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="tempo_uti" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="tempo_int" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="convenio_ID" Type="Edm.Int32"/>
+                <Property Name="procedencia_ID" Type="Edm.Int32"/>
+                <Property Name="cidade_residencia" Type="Edm.String"/>
+                <Property Name="medico_assist_ID" Type="Edm.String"/>
+                <Property Name="identificacao_complete_ID" Type="Edm.Int32"/>
+                <Property Name="tipo_cir_rm_ID" Type="Edm.Int32"/>
+                <Property Name="tipo_cir_valvar_ID" Type="Edm.Int32"/>
+                <Property Name="i_ao_ID" Type="Edm.Int32"/>
+                <Property Name="i_mi_ID" Type="Edm.Int32"/>
+                <Property Name="i_tric_ID" Type="Edm.Int32"/>
+                <Property Name="i_pulm_ID" Type="Edm.Int32"/>
+                <Property Name="e_ao_ID" Type="Edm.Int32"/>
+                <Property Name="e_mi_ID" Type="Edm.Int32"/>
+                <Property Name="e_tric_ID" Type="Edm.Int32"/>
+                <Property Name="e_pulm_ID" Type="Edm.Int32"/>
+                <Property Name="tipo_cir_estru_ID" Type="Edm.Int32"/>
+                <Property Name="cia_ID" Type="Edm.Int32"/>
+                <Property Name="civ_ID" Type="Edm.Int32"/>
+                <Property Name="fop_ID" Type="Edm.Int32"/>
+                <Property Name="pca_ID" Type="Edm.Int32"/>
+                <Property Name="coao_ID" Type="Edm.Int32"/>
+                <Property Name="t_fallot_ID" Type="Edm.Int32"/>
+                <Property Name="mixoma_ID" Type="Edm.Int32"/>
+                <Property Name="fibroelastoma_ID" Type="Edm.Int32"/>
+                <Property Name="aneurisma_aorta_ID" Type="Edm.Int32"/>
+                <Property Name="aneurisma_ve_ID" Type="Edm.Int32"/>
+                <Property Name="derrame_pericardico_ID" Type="Edm.Int32"/>
+                <Property Name="trombo_cardiaco_ID" Type="Edm.Int32"/>
+                <Property Name="cardiopatia_cong_ID" Type="Edm.Int32"/>
+                <Property Name="tipo_cir_outro_ID" Type="Edm.Int32"/>
+                <Property Name="dados_da_cirurgia_complete_ID" Type="Edm.Int32"/>
+                <Property Name="urgencia_ID" Type="Edm.Int32"/>
+                <Property Name="classe_angina_ID" Type="Edm.Int32"/>
+                <Property Name="nyha_ID" Type="Edm.Int32"/>
+                <Property Name="hp_acfa_ID" Type="Edm.Int32"/>
+                <Property Name="hp_actp_ID" Type="Edm.Int32"/>
+                <Property Name="hp_d_art_perif_ID" Type="Edm.Int32"/>
+                <Property Name="hp_asma_ID" Type="Edm.Int32"/>
+                <Property Name="hp_avc_ID" Type="Edm.Int32"/>
+                <Property Name="hp_alergia_ID" Type="Edm.Int32"/>
+                <Property Name="hp_cirug_card_ID" Type="Edm.Int32"/>
+                <Property Name="hp_coagulopat_ID" Type="Edm.Int32"/>
+                <Property Name="hp_dm_ID" Type="Edm.Int32"/>
+                <Property Name="hp_d_peptica_ID" Type="Edm.Int32"/>
+                <Property Name="hp_iam_ID" Type="Edm.Int32"/>
+                <Property Name="hp_iam_recente_ID" Type="Edm.Int32"/>
+                <Property Name="hp_dpoc_ID" Type="Edm.Int32"/>
+                <Property Name="hp_desnutricao_ID" Type="Edm.Int32"/>
+                <Property Name="hp_depressao_ID" Type="Edm.Int32"/>
+                <Property Name="hp_embolia_pulmonar_ID" Type="Edm.Int32"/>
+                <Property Name="hp_endocardite_ID" Type="Edm.Int32"/>
+                <Property Name="hp_etilismo_ID" Type="Edm.Int32"/>
+                <Property Name="hp_febre_reumatica_ID" Type="Edm.Int32"/>
+                <Property Name="hp_has_ID" Type="Edm.Int32"/>
+                <Property Name="hp_hemodial_ID" Type="Edm.Int32"/>
+                <Property Name="hp_hepatopatia_ID" Type="Edm.Int32"/>
+                <Property Name="hp_infeccao_ID" Type="Edm.Int32"/>
+                <Property Name="hp_irc_ID" Type="Edm.Int32"/>
+                <Property Name="hp_neoplasia_ID" Type="Edm.Int32"/>
+                <Property Name="hp_obesidade_ID" Type="Edm.Int32"/>
+                <Property Name="hp_prostatismo_ID" Type="Edm.Int32"/>
+                <Property Name="hp_tabagismo_ID" Type="Edm.Int32"/>
+                <Property Name="hp_tireoidopatia_ID" Type="Edm.Int32"/>
+                <Property Name="hp_transfusao_ID" Type="Edm.Int32"/>
+                <Property Name="hp_varizes_ID" Type="Edm.Int32"/>
+                <Property Name="hp_dislipidemia_ID" Type="Edm.Int32"/>
+                <Property Name="hp_drogadicao_ID" Type="Edm.Int32"/>
+                <Property Name="hp_hiv_positivo_ID" Type="Edm.Int32"/>
+                <Property Name="hp_marcapasso_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_antagonista_ca_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_antiagr_plaq_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_antiarritmico_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_corticoide_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_beta_bloqueador_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_digoxina_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_diuretico_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_estatina_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_heparina_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_hipoglic_oral_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_ieca_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_insulina_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_nitrato_ID" Type="Edm.Int32"/>
+                <Property Name="mdp_bia_ID" Type="Edm.Int32"/>
+                <Property Name="outro_medic_ID" Type="Edm.Int32"/>
+                <Property Name="internacao_complete_ID" Type="Edm.Int32"/>
+                <Property Name="cat_fejecao" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="cat_les_ada_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_acx_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_acd_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_diagonalis_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_dg_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_dp_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_mg_ID" Type="Edm.Int32"/>
+                <Property Name="cat_les_tce_ID" Type="Edm.Int32"/>
+                <Property Name="cat_art_normais_ID" Type="Edm.Int32"/>
+                <Property Name="cat_imi_ID" Type="Edm.Int32"/>
+                <Property Name="cat_emi_ID" Type="Edm.Int32"/>
+                <Property Name="cat_iao_ID" Type="Edm.Int32"/>
+                <Property Name="cat_eao_ID" Type="Edm.Int32"/>
+                <Property Name="cat_hap_ID" Type="Edm.Int32"/>
+                <Property Name="eco_fejecao" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_imi_ID" Type="Edm.Int32"/>
+                <Property Name="eco_emi_ID" Type="Edm.Int32"/>
+                <Property Name="eco_iao_ID" Type="Edm.Int32"/>
+                <Property Name="eco_eao_ID" Type="Edm.Int32"/>
+                <Property Name="eco_area" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_grad_transvalvar" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_grad_max" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_grad_med" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_hap_ID" Type="Edm.Int32"/>
+                <Property Name="eco_hap_val" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_hve_ID" Type="Edm.Int32"/>
+                <Property Name="eco_diam_diast_final" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_diam_sist_final" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_tam_atrio_esq" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="eco_prolapso_mitral_ID" Type="Edm.Int32"/>
+                <Property Name="eco_bicuspide_ID" Type="Edm.Int32"/>
+                <Property Name="fejecao_geral" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="cat_e_eco_complete_ID" Type="Edm.Int32"/>
+                <Property Name="creatinina" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="fibrinogenio" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="lactato" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="albumina" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="euroscore" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="sts_score_morte" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="sts_score_morbi" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="guaragna_score" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="lab_e_escores_complete_ID" Type="Edm.Int32"/>
+                <Property Name="cec_ID" Type="Edm.Int32"/>
+                <Property Name="tempo_cec" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="pinc_aortico_ID" Type="Edm.Int32"/>
+                <Property Name="tempo_pinc_aortico" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="corrente_les_transop_ID" Type="Edm.Int32"/>
+                <Property Name="patch_transop_ID" Type="Edm.Int32"/>
+                <Property Name="n_pontes_saf" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="rsaf_ada_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_acx_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_acd_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_diagonalis_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_dg_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_dp_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_mg_ID" Type="Edm.Int32"/>
+                <Property Name="rsaf_pl_ID" Type="Edm.Int32"/>
+                <Property Name="revasc_mamaria_ID" Type="Edm.Int32"/>
+                <Property Name="tipo_protese_valvar_ID" Type="Edm.Int32"/>
+                <Property Name="aspecto_ve" Type="Edm.String"/>
+                <Property Name="endart_coronaria_ID" Type="Edm.Int32"/>
+                <Property Name="endart_carotida_ID" Type="Edm.Int32"/>
+                <Property Name="revasc_incompleta_ID" Type="Edm.Int32"/>
+                <Property Name="transop_pcr_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_fib_atrial_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_anafilaxia_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_bavt_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_uso_bia_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_bradicard_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_broncoesp_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_choque_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_sangr_aum_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_corr_lesao_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_dif_s_cec_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_dsc_aorta_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_fib_vent_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_perf_card_ID" Type="Edm.Int32"/>
+                <Property Name="tr_op_cmp_hipot_sev_ID" Type="Edm.Int32"/>
+                <Property Name="transoperatorio_complete_ID" Type="Edm.Int32"/>
+                <Property Name="posop_lactato" Type="Edm.Decimal" Scale="2" Precision="15"/>
+                <Property Name="posop_anemia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_acfa_ID" Type="Edm.Int32"/>
+                <Property Name="posop_avc_ID" Type="Edm.Int32"/>
+                <Property Name="posop_atelec_ID" Type="Edm.Int32"/>
+                <Property Name="posop_bavt_ID" Type="Edm.Int32"/>
+                <Property Name="posop_bacteremia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_bia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_baixo_debito_ID" Type="Edm.Int32"/>
+                <Property Name="posop_bloq_rad_ID" Type="Edm.Int32"/>
+                <Property Name="posop_bloq_rae_ID" Type="Edm.Int32"/>
+                <Property Name="posop_broncoespasmo_ID" Type="Edm.Int32"/>
+                <Property Name="posop_coma_ID" Type="Edm.Int32"/>
+                <Property Name="posop_coagulopat_ID" Type="Edm.Int32"/>
+                <Property Name="posop_choque_ID" Type="Edm.Int32"/>
+                <Property Name="posop_derr_pleural_ID" Type="Edm.Int32"/>
+                <Property Name="posop_dist_eletrol_ID" Type="Edm.Int32"/>
+                <Property Name="posop_dm_descomp_ID" Type="Edm.Int32"/>
+                <Property Name="posop_dist_conduta_ID" Type="Edm.Int32"/>
+                <Property Name="posop_dren_aument_ID" Type="Edm.Int32"/>
+                <Property Name="posop_depressao_ID" Type="Edm.Int32"/>
+                <Property Name="posop_dr_vasoativa_ID" Type="Edm.Int32"/>
+                <Property Name="posop_enfis_subcut_ID" Type="Edm.Int32"/>
+                <Property Name="posop_embolia_perif_ID" Type="Edm.Int32"/>
+                <Property Name="posop_endocardite_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hipertensao_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hemolise_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hemodialise_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hemor_digest_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hemotorax_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hipotao_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hipovolemia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hipoxemia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hipervolemia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_infarto_ID" Type="Edm.Int32"/>
+                <Property Name="posop_insuf_card_ID" Type="Edm.Int32"/>
+                <Property Name="posop_ictericia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_ileo_adinamico_ID" Type="Edm.Int32"/>
+                <Property Name="posop_intox_digital_ID" Type="Edm.Int32"/>
+                <Property Name="posop_infec_resp_ID" Type="Edm.Int32"/>
+                <Property Name="posop_mediastinite_ID" Type="Edm.Int32"/>
+                <Property Name="posop_ira_ID" Type="Edm.Int32"/>
+                <Property Name="posop_les_plx_nerv_ID" Type="Edm.Int32"/>
+                <Property Name="posop_paral_diafrag_ID" Type="Edm.Int32"/>
+                <Property Name="posop_pcr_ID" Type="Edm.Int32"/>
+                <Property Name="posop_pericardite_ID" Type="Edm.Int32"/>
+                <Property Name="posop_plaquetopenia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_pneumotorax_ID" Type="Edm.Int32"/>
+                <Property Name="posop_retorno_pocc_ID" Type="Edm.Int32"/>
+                <Property Name="posop_reinterv_ID" Type="Edm.Int32"/>
+                <Property Name="posop_reintub_ID" Type="Edm.Int32"/>
+                <Property Name="posop_sangramento_ID" Type="Edm.Int32"/>
+                <Property Name="posop_sara_ID" Type="Edm.Int32"/>
+                <Property Name="posop_sepse_ID" Type="Edm.Int32"/>
+                <Property Name="posop_swan_ganz_ID" Type="Edm.Int32"/>
+                <Property Name="posop_tampo_card_ID" Type="Edm.Int32"/>
+                <Property Name="posop_trombocitose_ID" Type="Edm.Int32"/>
+                <Property Name="posop_taqui_vent_ID" Type="Edm.Int32"/>
+                <Property Name="posop_taqui_sup_vent_ID" Type="Edm.Int32"/>
+                <Property Name="posop_tromb_pulm_ID" Type="Edm.Int32"/>
+                <Property Name="posop_vm_prolong_ID" Type="Edm.Int32"/>
+                <Property Name="posop_sirs_ID" Type="Edm.Int32"/>
+                <Property Name="posop_insuf_hepat_ID" Type="Edm.Int32"/>
+                <Property Name="posop_isq_mesent_ID" Type="Edm.Int32"/>
+                <Property Name="posop_hipotermia_ID" Type="Edm.Int32"/>
+                <Property Name="posop_s_pos_pericard_ID" Type="Edm.Int32"/>
+                <Property Name="marcap_definitivo_ID" Type="Edm.Int32"/>
+                <Property Name="pos_operatorio_complete_ID" Type="Edm.Int32"/>
+                <Property Name="germe01_ID" Type="Edm.Int32"/>
+                <Property Name="germe02_ID" Type="Edm.Int32"/>
+                <Property Name="germe03_ID" Type="Edm.Int32"/>
+                <Property Name="germe04_ID" Type="Edm.Int32"/>
+                <Property Name="germe05_ID" Type="Edm.Int32"/>
+                <Property Name="antimicrobiano01_ID" Type="Edm.Int32"/>
+                <Property Name="antimicrobiano02_ID" Type="Edm.Int32"/>
+                <Property Name="antimicrobiano03_ID" Type="Edm.Int32"/>
+                <Property Name="antimicrobiano04_ID" Type="Edm.Int32"/>
+                <Property Name="antimicrobiano05_ID" Type="Edm.Int32"/>
+                <Property Name="antimicrobiano06_ID" Type="Edm.Int32"/>
+                <Property Name="culturais_complete_ID" Type="Edm.Int32"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="true"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false" DefaultValue="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="MestradoService.DraftAdministrativeData" ContainsTarget="true"/>
+                <NavigationProperty Name="SiblingEntity" Type="MestradoService.Paciente"/>
+            </EntityType>
+            <EntityType Name="DraftAdministrativeData">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+            </EntityType>
+            <Action Name="draftPrepare" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="MestradoService.Paciente"/>
+                <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+                <ReturnType Type="MestradoService.Paciente"/>
+            </Action>
+            <Action Name="draftActivate" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="MestradoService.Paciente"/>
+                <ReturnType Type="MestradoService.Paciente"/>
+            </Action>
+            <Action Name="draftEdit" IsBound="true" EntitySetPath="in">
+                <Parameter Name="in" Type="MestradoService.Paciente"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+                <ReturnType Type="MestradoService.Paciente"/>
+            </Action>
+            <Annotations Target="MestradoService.Paciente">
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Paciente"/>
+                        <PropertyValue Property="TypeNamePlural" String="Pacientes"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="nome"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="dt_nasc"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>idade</PropertyPath>
+                        <PropertyPath>dt_int_hosp</PropertyPath>
+                        <PropertyPath>dt_cirurgia</PropertyPath>
+                        <PropertyPath>dt_obito</PropertyPath>
+                        <PropertyPath>tempo_pre_op</PropertyPath>
+                        <PropertyPath>tempo_pos_op</PropertyPath>
+                        <PropertyPath>tempo_uti</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="nome"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="sexo/text"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="dt_nasc"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="idade"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="peso"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="altura"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="obito/text"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Main"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Main"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Main">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="nome"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="sexo/text"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="dt_nasc"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="idade"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="peso"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="altura"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="obito/text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="MestradoService.EntityContainer/Paciente">
+                <Annotation Term="Common.DraftRoot">
+                    <Record Type="Common.DraftRootType">
+                        <PropertyValue Property="ActivationAction" String="MestradoService.draftActivate"/>
+                        <PropertyValue Property="EditAction" String="MestradoService.draftEdit"/>
+                        <PropertyValue Property="PreparationAction" String="MestradoService.draftPrepare"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="MestradoService.Paciente/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                </Annotations>
+                <Annotations Target="MestradoService.Paciente/createdBy">
+                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                    <Annotation Term="Core.Immutable" Bool="true"/>
+                    <Annotation Term="Core.Computed" Bool="true"/>
+                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                        </Annotations>
+                        <Annotations Target="MestradoService.Paciente/modifiedAt">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                            </Annotations>
+                            <Annotations Target="MestradoService.Paciente/modifiedBy">
+                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                <Annotation Term="Core.Computed" Bool="true"/>
+                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/id">
+                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                        <Annotation Term="Common.Text" String="id"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/nome">
+                                        <Annotation Term="Common.Label" String="Nome"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/sexo_ID">
+                                        <Annotation Term="Common.Label" String="Sexo"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/dt_nasc">
+                                        <Annotation Term="Common.Label" String="Data de Nascimento"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/idade">
+                                        <Annotation Term="Common.Label" String="Idade"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/IsActiveEntity">
+                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/HasActiveEntity">
+                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/HasDraftEntity">
+                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.Paciente/DraftAdministrativeData">
+                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                    </Annotations>
+                                    <Annotations Target="MestradoService.DraftAdministrativeData">
+                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftAdministrativeData}"/>
+                                        </Annotations>
+                                        <Annotations Target="MestradoService.DraftAdministrativeData/DraftUUID">
+                                            <Annotation Term="UI.Hidden" Bool="true"/>
+                                            <Annotation Term="Common.Label" String="{i18n>Draft_DraftUUID}"/>
+                                            </Annotations>
+                                            <Annotations Target="MestradoService.DraftAdministrativeData/CreationDateTime">
+                                                <Annotation Term="Common.Label" String="{i18n>Draft_CreationDateTime}"/>
+                                                </Annotations>
+                                                <Annotations Target="MestradoService.DraftAdministrativeData/CreatedByUser">
+                                                    <Annotation Term="Common.Label" String="{i18n>Draft_CreatedByUser}"/>
+                                                    </Annotations>
+                                                    <Annotations Target="MestradoService.DraftAdministrativeData/DraftIsCreatedByMe">
+                                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsCreatedByMe}"/>
+                                                        </Annotations>
+                                                        <Annotations Target="MestradoService.DraftAdministrativeData/LastChangeDateTime">
+                                                            <Annotation Term="Common.Label" String="{i18n>Draft_LastChangeDateTime}"/>
+                                                            </Annotations>
+                                                            <Annotations Target="MestradoService.DraftAdministrativeData/LastChangedByUser">
+                                                                <Annotation Term="Common.Label" String="{i18n>Draft_LastChangedByUser}"/>
+                                                                </Annotations>
+                                                                <Annotations Target="MestradoService.DraftAdministrativeData/InProcessByUser">
+                                                                    <Annotation Term="Common.Label" String="{i18n>Draft_InProcessByUser}"/>
+                                                                    </Annotations>
+                                                                    <Annotations Target="MestradoService.DraftAdministrativeData/DraftIsProcessedByMe">
+                                                                        <Annotation Term="UI.Hidden" Bool="true"/>
+                                                                        <Annotation Term="Common.Label" String="{i18n>Draft_DraftIsProcessedByMe}"/>
+                                                                        </Annotations>
+                                                                    </Schema>
+                                                                </edmx:DataServices>
+                                                            </edmx:Edmx>

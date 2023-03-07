@@ -1,0 +1,1781 @@
+namespace mestrado;
+using { managed } from '@sap/cds/common';
+
+entity Paciente : managed {
+    key id                       : String;
+    record_id                    : String;
+    code_access                  : Integer;
+    npac                         : Integer;
+    registro_hsl                 : String;
+    nome                         : String;
+    sexo_masc                    : Association to Sexo;
+    dt_nasc                      : Date;
+    idade                        : Integer;
+    peso                         : Decimal(15, 2);
+    altura                       : Decimal(15, 2);
+    imc                          : Decimal(15, 2);
+    dt_int_hosp                  : Date;
+    dt_int_hosp_test01           : String;
+    dt_cirurgia                  : Date;
+    dt_int_uti                   : Date;
+    dt_alta_uti                  : Date;
+    dt_alta_hosp                 : Date;
+    obito                        : Association to Obito;
+    dt_obito                     : Date;
+    local_obito                  : Association to LocalObito;
+    tempo_pre_op                 : Decimal(15, 2);
+    tempo_pos_op                 : Decimal(15, 2);
+    tempo_uti                    : Decimal(15, 2);
+    convenio			            : Association to Convenio;
+    procedencia		            : Association to Procedencia;
+    medico_assist                : Association to MedicoAssistente;
+    identificacao_complete       : Association to IdentificacaoCompleta;
+    tipo_cir_rm			         : Association to RevascularizaoMiocardica;
+    tipo_cir_valvar		         : Association to CirurgiaValvar;
+    i_ao				               : Association to InduficiaenciaAortica;
+    i_mi				               : Association to InsuficienciaMitral;
+    i_tric				            : Association to InsuficienciaTricuspide;
+    i_pulm 			               : Association to InsuficienciaPulmonar;
+    e_ao				               : Association to EstenoseAortica;
+    e_mi		                     : Association to EstenoseMitral;
+    e_tric                       : Association to EstenoseTricuspide;
+    e_pulm	                     : Association to EstenosePulmonar;
+    tipo_cir_estru	            : Association to CirurgiaEstrutural;
+    cia		                     : Association to CIA;
+    civ		                     : Association to CIV;
+    fop		                     : Association to FOP;
+    pca		                     : Association to PCA;
+    coao		                     : Association to CoarctacaoAorta;
+    t_fallot                     : Association to TetralogiaFallot;
+    mixoma                       : Association to TumorIntracardiaco;
+    fibroelastoma                : Association to Fibroelastoma;
+    aneurisma_aorta              : Association to AneurismaAorta;
+    aneurisma_ve	               : Association to AneurismaVE;
+    derrame_pericardico          : Association to DoencasPericardio;
+    trombo_cardiaco	            : Association to TromboIntracardiaco;
+    cardiopatia_cong	            : Association to CardiopatiaCongenita;
+    tipo_cir_outro		         : Association to OutroTipoCirurgico;
+    dados_da_cirurgia_complete   : Association to DadosCirurgiaCompleto;
+    urgencia	                  : Association to Urgencia;
+    classe_angina	               : Association to ClasseAngina;
+    nyha		                     : Association to ClasseNYHA;
+    hp_acfa	                     : Association to FibrilacaoAtrial;
+    hp_actp	                     : Association to AngioplastiaCoronariana;
+    hp_d_art_perif	            : Association to DoencaArterialPeriferica;
+    hp_asma	                     : Association to Asma;
+    hp_avc	                     : Association to AcidenteVascularCerebralAit;
+    hp_alergia	                  : Association to Alergia;
+    hp_cirug_card	               : Association to CirurgiaCardiacaPrevia;
+    hp_coagulopat	               : Association to HistoricoCoagulopatia;
+    hp_dm	                     : Association to DiabetesMellitus;
+    hp_d_peptica	               : Association to DoencaPeptica;
+    hp_iam	                     : Association to InfartoAgudoMiocardio;
+    hp_iam_recente	            : Association to InfartoAgudoMiocardioRecente;
+    hp_dpoc	                     : Association to DoencaPulmonarCronica;
+    hp_desnutricao	            : Association to Desnutricao;
+    hp_depressao	               : Association to Depressao;
+    hp_embolia_pulmonar	         : Association to EmboliaPulmonar;
+    hp_endocardite	            : Association to Endocardite;
+    hp_etilismo                  : Association to Etilismo;
+    hp_febre_reumatica	         : Association to FebreReumatica;
+    hp_has	                     : Association to HipertensaoArterialSistemica;
+    hp_hemodial	               : Association to Hemodialise;
+    hp_hepatopatia	            : Association to Hepatopatia;
+    hp_infeccao	               : Association to Infeccao;
+    hp_irc	                     : Association to InsuficienciaRenalCronica;
+    hp_neoplasia	               : Association to Neoplasia;
+    hp_obesidade	               : Association to Obesidade;
+    hp_prostatismo	            : Association to Prostatismo;
+    hp_tabagismo	               : Association to TabagismoAtivo;
+    hp_tireoidopatia	            : Association to Tireoidopatia;
+    hp_transfusao	               : Association to Transfusao;
+    hp_varizes	                  : Association to Varizes;
+    hp_dislipidemia	            : Association to Dislipidemia;
+    hp_drogadicao	               : Association to Drogadicao;
+    hp_hiv_positivo	            : Association to HIVPositivo;
+    hp_marcapasso	               : Association to MarcapassoHP;
+    mdp_antagonistaca	         : Association to AntagonistaCalcioMDP;
+    mdp_antiagr_plaq	            : Association to AntiagregantePlaquetarioMDP;
+    mdp_antiarritmico	         : Association to AntiarritmicoMDP;
+    mdp_corticoida	            : Association to CorticoideMDP;
+    mdp_beta_bloqueador          : Association to BetaBloqueadorMDP;
+    mdp_digoxina	               : Association to DigoxinaMDP;
+    mdp_diuretico	               : Association to DiureticoMDP;
+    mdp_estatina	               : Association to EstatinaMDP;
+    mdp_hipoglic_oral	         : Association to HipoglicemianteOralMDP;
+    mdp_ieca	                  : Association to InibidorEcaMDP;
+    mdp_insulina	               : Association to InsulinaMDP;
+    mdp_nitrato	               : Association to NitratoMDP;
+    mdp_bia	                     : Association to BalaoIntraAorticoMDP;
+    outro_medic	               : Association to OutroMedicamentoP;
+    internacao_complete	         : Association to InternacaoCompleta;
+    cat_fejecao	               : Decimal(15, 2);
+    cat_les_ada	               : Association to ArteriaDescendenteAnterior;
+    cat_les_acx	               : Association to ArteriaCircunflexa;
+    cat_les_acd	               : Association to ArteriaCoronariaDireita;
+    cat_les_diagonalis	         : Association to ArteriaDiagonalis;
+    cat_les_dg	                  : Association to ArteriaDiagonal;
+    cat_les_dp	                  : Association to ArteriaDesdendentePosterior;
+    cat_les_mg	                  : Association to ArteriaMarginal;
+    cat_les_tce	               : Association to TroncoCoronariaEsquerda;
+    cat_art_normais	            : Association to CoronariasNormais;
+    cat_imi		                  : Association to InsuficienciaMitral;
+    cat_emi		                  : Association to EstenoseMitral;
+    cat_iao		                  : Association to InsuficienciaAortica;
+    cat_eao		                  : Association to EstenoseAortica;
+    cat_hap		                  : Association to HipertensaoArterialPulmonar;
+    eco_fejecao	               : Decimal(15, 2);
+    eco_imi		                  : Association to InsuficienciaMitral;
+    eco_emi		                  : Association to EstenoseMitral;
+    eco_iao		                  : Association to InsufucienciaAortica;
+    eco_eao		                  : Association to EstenoseAortica;
+    eco_area		               : Decimal(15, 2);
+    eco_grad_transvalvar	      : Decimal(15, 2);
+    eco_grad_max	               : Decimal(15, 2);
+    eco_grad_med	               : Decimal(15, 2);
+    eco_hap		                  : Association to HipertensaoPulmonarECO;
+    eco_hap_val	               : Decimal(15, 2);
+    eco_hve		                  : Association to HipertrofiaVentriculoEsquerdoECO;
+    eco_diam_dist_final		      : Decimal(15, 2);
+    eco_diam_sist_final		      : Decimal(15, 2);
+    eco_tam_atrio_esq		      : Decimal(15, 2);
+    eco_prolapso_mitral		      : Association to ProlapsoMitralECO;	
+    eco_bucuspide			         : Association to ValvulaAorticaBicuspideECO;
+    fejecao_geral			         : Decimal(15, 2);
+    cat_e_eco_complete		      : Association to CatEEcoCompletos;
+    creatinina		               : Decimal(15, 2);
+    fibrinogenio		            : Decimal(15, 2);
+    lactato			               : Decimal(15, 2);
+    albumina			            : Decimal(15, 2);
+    euroscore			            : Decimal(15, 2);
+    sts_score_morte	            : Decimal(15, 2);
+    sts_score_morbi	            : Decimal(15, 2);
+    guaragna_score		         : Decimal(15, 2);
+    lab_e_escores_complete	      : Association to LabEEscoresCompletos;
+    cec			                  : Association to UsoCirculacaoExtracorporea;
+    tempo_cec		               : Decimal(15, 2);
+    pinc_aortico	               : Association to UsoPincamentoAortico;
+    tempo_pinc_aortico	         : Decimal(15, 2);
+    corrente_les_transop		   : Association to CorrenteLesaoTransoperatorio;
+    patch_transop		            : Association to UsoPatchTransoperatorio;
+    n_ponte_saf		            : Decimal(15, 2);
+    rsaf_ada			            : Association to ArteriaDescendenteAnterior;
+    rsaf_acd			            : Association to ArteriaCoronariaDireita;
+    rsaf_diagonalis	            : Association to ArteriaDiagonalis;
+    rsaf_dg			               : Association to ArteriaDiagonal;
+    rsaf_dp			               : Association to ArteriaDescendentePosterior;
+    rsaf_mg			               : Association to RevascArteriaMarginal;
+    rsaf_pl			               : Association to ArteriaPosteroLateral;
+    revasc_mamaria		         : Association to UsoMamaria;
+    tipo_protese_valvar          : Association to TipoProteseValvar;
+    aspecto_ve		               : String;
+    endart_coronaria	            : Association to EndarterectomiaCoronaria;
+    endart_carotida	            : Association to EndarterectomiaCarotida;
+    revasc_incompleta 	         : Association to RevascularizacaoIncompleta;
+    transop_pcr		            : Association to ParadaCardiorrespiratoriaTransoperatoriaTrOp;
+    tr_op_cmp_fib_atrial	      : Association to FibrilacaoAtrial;
+    tr_op_cmp_anafilaxia	      : Association to AnafilaxiaTrOp;
+    tr_op_cmp_bavt   		      : Association to BAVTTrOp;
+    tr_op_cmp_uso_bia		      : Association to BIATrOp;
+    tr_op_cmp_bradicard		      : Association to BradicardiaTrOp;
+    tr_op_cmp_broncoesp		      : Association to BroncoespasmoTrOp;
+    tr_op_cmp_choque		         : Association to ChoqueTrOp;
+    tr_op_cmp_sangr_aum		      : Association to SangramentoAumentadoTrOp;
+    tr_op_cmp_corr_lesao	      : Association to CorrenteLesaoTrOp;
+    tr_op_cmp_dif_s_cec		      : Association to DificuldadeSairCEC;
+    tr_op_cmp_dsc_aorta		      : Association to DisseccaoAortaTrOp;
+    tr_op_cmp_fib_vent		      : Association to FibrilacaoVentricularTrOp;
+    tr_op_cmp_perf_card		      : Association to PerfuracaoCardiacaTrOp;
+    tr_op_cmp_hipot_sev	         : Association to HipotensaoSeveraChoquerOp;
+    transoperatotio_complete	   : Association to PosOperatorioCompleto;
+    posop_lactato		            : Decimal(15, 2);
+    posop_anemia		            : Association to AnemiaPosOp;
+    posop_acfa		               : Association to FibrilacaoAtrialPosOp;
+    posop_avc			            : Association to AVCPosOp;
+    posop_atelec		            : Association to AtelectasiaPosOp;
+    posop_bavt		               : Association to BloqueioAVTotalPosOp;
+    posop_bacteremia	            : Association to BacteremiaPosOp;
+    posop_bia			            : Association to BIAPosOp;
+    posop_baixo_debito	         : Association to BaixoDEbitoPosOp;
+    posop_bloq_rad		         : Association to BloqueioRamoDireitoPosOp;
+    posop_bloq_rae		         : Association to BloqueioRamoEsquerdoPosOp;
+    posop_broncoespasmo		      : Association to BroncoespasmoPosOp;
+    posop_coma		               : Association to ComaPosOp;
+    posop_coagulopat	            : Association to CoagulopatiaPosOp;
+    posop_choque		            : Association to ChoquePosOp;
+    posop_derr_pleural	         : Association to DerramePleuralPosOp;
+    posop_dist_eletrol	         : Association to DisturbioHidroeletrolitico;
+    posop_dm_descomp	            : Association to DiabeteDescompensadoPosOp;
+    posop_dist_conduta	         : Association to DisturbioCondutaAgitacao;
+    posop_dren_aument	         : Association to DrenagemAumentadaPosOp;
+    posop_depressao	            : Association to DepressaoPosOp;
+    posop_dr_vasoativa	         : Association to UsoDrogaVasoativa;
+    posop_enfis_subcut	         : Association to EnfisemaSubcutaneoPosOp;
+    posop_embolia_perif	         : Association to EmboliaPerifericaPosOp;
+    posop_endocardite	         : Association to Endocardite;
+    posop_hipertensao	         : Association to HipertensaoPosOp;
+    posop_hemodialise	         : Association to HemodialisePosOP;
+    posop_hemor_digest	         : Association to HemorragiaDigestivaPosOp;
+    posop_hemotorax	            : Association to HemotoraxPosOp;
+    posop_hipotao 		         : Association to HipotensaoPosOp;
+    posop_hipovolemia	         : Association to HipovolemiaPosOp;
+    posop_hipoxemia	            : Association to HipoxemiaPosOp;
+    posop_hipervolemia	         : Association to HipervolemiaPosOp;
+    posop_infarto		            : Association to InfartoPosOp;
+    posop_insuf_card	            : Association to InsuficienciaCardiacaPosOp;
+    posop_ictericia	            : Association to IctericiaPosOp;
+    posop_ileo_adinamico         : Association to IleoAdinamico;
+    posop_intox_digital	         : Association to IntoxicacaoDigitalica;
+    posop_infec_resp	            : Association to InfeccaoRespiratoriaPosOp;
+    posop_mediastinite	         : Association to InfeccaoFeridaOperatoria;
+    posop_ira			            : Association to InsuficienciaRenalPosOp;
+    posop_les_plx_nerv	         : Association to LesaoPlexoNervoso;
+    posop_paaral_diafrag         : Association to ParalisiaDiafragmatica;
+    posop_pcr			            : Association to ParadaCardiorrespiratoriaPosOp;
+    posop_pericardite	         : Association to PericarditePosOp;
+    posop_plaquetope	            : Association to Plaquetopenia;
+    posop_pneumotorax	         : Association to Pneumotorax;
+    posop_retorno_pocc	         : Association to RetornoPocc;
+    posop_reinterv		         : Association to Reintervencao;
+    posop_reintub		            : Association to Reintubacao;
+    posop_sangramento	         : Association to SangramentoPosOp;
+    posop_sara	                  : Association to SindromeAngustiaRespiratoriaAguda;
+    posop_sepse	               : Association to Sepse;
+    posop_swan_ganz	            : Association to UsoSwanGanzPosOp;
+    posop_tamp_card	            : Association to TamponamentoCardiaco;
+    posop_trombocitose	         : Association to Trombocitose;
+    posop_taqui_vent	            : Association to TaquicardiaVentricularPosOp;
+    posop_taqui_sup_vent         : Association to TaquicardiaSupraventricularPosOp;
+    posop_tromb_pulm	            : Association to TromboembolismoPulmonarPosOp;
+    posop_vm_prolong	            : Association to VentilacaoMecanicaProlongadaPosOp;
+    posop_sirs	                  : Association to SindromeRespostaInflamatoriaSistemicaPosOp;
+    posop_insuf_hepat	         : Association to InsuficienciaHepaticaPosOp;
+    posop_isq_mesenterica	      : Association to IsquemiaMesentericaPosOp;
+    posop_hipotermia 	         : Association to HipotermiaPosOp;
+    posop_s_pos_pericard	      : Association to SindromePosPericardiotomiaPosOp;
+    marcap_definitivo 		      : Association to UsoMarcapassoDefinitivoPosOp;
+    pos_operatorio_complete      : Association to DadosPosOpCompletos;
+    germe01		                  : Association to Microbio01;
+    germe02		                  : Association to Microbio02;
+    germe03		                  : Association to Microbio03;
+    germe04		                  : Association to Microbio04;
+    germe05		                  : Association to Microbio05;
+    antimicrobiano01	            : Association to Antimicrobiano01;
+    antimicrobiano02	            : Association to Antimicrobiano02;
+    antimicrobiano03	            : Association to Antimicrobiano03;
+    antimicrobiano04	            : Association to Antimicrobiano04;
+    antimicrobiano05	            : Association to Antimicrobiano05;
+    antimicrobiano06	            : Association to Antimicrobiano06;
+    culturais_complete	         : Association to CulturaisCompletos;
+}
+
+entity Formulario : managed {
+   key ID      : Integer;
+   text        : String;
+   pacientes   : Association to many Paciente on pacientes.obito = $self
+                                              or pacientes.tipo_cir_rm = $self
+                                              or pacientes.tipo_cir_valvar = $self
+                                              or pacientes.i_ao = $self
+                                              or pacientes.i_mi = $self
+                                              or pacientes.i_tric = $self
+                                              or pacientes.i_pulm = $self
+                                              or pacientes.e_ao = $self
+                                              or pacientes.e_mi = $self
+                                              or pacientes.e_tric = $self
+                                              or pacientes.e_pulm = $self
+                                              or pacientes.tipo_cir_estru = $self
+                                              or pacientes.cia = $self
+                                              or pacientes.civ = $self
+                                              or pacientes.fop = $self
+                                              or pacientes.pca = $self
+                                              or pacientes.coao		             = $self
+                                              or pacientes.t_fallot             = $self
+                                              or pacientes.mixoma               = $self
+                                              or pacientes.fibroelastoma        = $self
+                                              or pacientes.aneurisma_aorta      = $self
+                                              or pacientes.aneurisma_ve	       = $self
+                                              or pacientes.derrame_pericardico  = $self
+                                              or pacientes.trombo_cardiaco	    = $self
+                                              or pacientes.cardiopatia_cong	    = $self
+                                              or pacientes.tipo_cir_outro		 = $self
+                                              or pacientes.nyha		           = $self    
+                                              or pacientes.hp_acfa	           = $self    
+                                              or pacientes.hp_actp	           = $self    
+                                              or pacientes.hp_d_art_perif	     = $self 
+                                              or pacientes.hp_asma	           = $self    
+                                              or pacientes.hp_avc	              = $self 
+                                              or pacientes.hp_alergia	        = $self    
+                                              or pacientes.hp_cirug_card	     = $self    
+                                              or pacientes.hp_coagulopat	     = $self    
+                                              or pacientes.hp_dm	              = $self 
+                                              or pacientes.hp_d_peptica	        = $self 
+                                              or pacientes.hp_iam	              = $self 
+                                              or pacientes.hp_iam_recente	     = $self 
+                                              or pacientes.hp_dpoc	           = $self    
+                                              or pacientes.hp_desnutricao	     = $self 
+                                              or pacientes.hp_depressao	        = $self 
+                                              or pacientes.hp_embolia_pulmonar = $self	  
+                                              or pacientes.hp_endocardite	     = $self 
+                                              or pacientes.hp_etilismo          = $self  
+                                              or pacientes.hp_febre_reumatica	  = $self 
+                                              or pacientes.hp_has	              = $self 
+                                              or pacientes.hp_hemodial	        = $self 
+                                              or pacientes.hp_hepatopatia	     = $self 
+                                              or pacientes.hp_infeccao	        = $self 
+                                              or pacientes.hp_irc	              = $self 
+                                              or pacientes.hp_neoplasia	        = $self 
+                                              or pacientes.hp_obesidade	        = $self 
+                                              or pacientes.hp_prostatismo	     = $self 
+                                              or pacientes.hp_tabagismo	        = $self 
+                                              or pacientes.hp_tireoidopatia	  = $self    
+                                              or pacientes.hp_transfusao	     = $self    
+                                              or pacientes.hp_varizes	        = $self    
+                                              or pacientes.hp_dislipidemia	     = $self 
+                                              or pacientes.hp_drogadicao	     = $self    
+                                              or pacientes.hp_hiv_positivo	     = $self 
+                                              or pacientes.hp_marcapasso	     = $self    
+                                              or pacientes.mdp_antagonistaca	  = $self 
+                                              or pacientes.mdp_antiagr_plaq	  = $self    
+                                              or pacientes.mdp_antiarritmico	  = $self 
+                                              or pacientes.mdp_corticoida	     = $self 
+                                              or pacientes.mdp_beta_bloqueador  = $self  
+                                              or pacientes.mdp_digoxina	        = $self 
+                                              or pacientes.mdp_diuretico	     = $self    
+                                              or pacientes.mdp_estatina	        = $self 
+                                              or pacientes.mdp_hipoglic_oral	  = $self 
+                                              or pacientes.mdp_ieca	           = $self 
+                                              or pacientes.mdp_insulina	        = $self 
+                                              or pacientes.mdp_nitrato	        = $self 
+                                              or pacientes.mdp_bia	           = $self    
+                                              or pacientes.outro_medic	        = $self 
+                                              or pacientes.cat_les_ada	        = $self
+                                              or pacientes.cat_les_acx	        = $self
+                                              or pacientes.cat_les_acd	        = $self
+                                              or pacientes.cat_les_diagonalis  = $self
+                                              or pacientes.cat_les_dg	       = $self
+                                              or pacientes.cat_les_dp	       = $self
+                                              or pacientes.cat_les_mg	       = $self
+                                              or pacientes.cat_les_tce	       = $self
+                                              or pacientes.cat_art_normais	    = $self
+                                              or pacientes.cat_imi		       = $self
+                                              or pacientes.cat_emi		       = $self
+                                              or pacientes.cat_iao		       = $self
+                                              or pacientes.cat_eao		       = $self
+                                              or pacientes.cat_hap		       = $self
+                                              or pacientes.eco_imi             = $self
+                                              or pacientes.eco_emi             = $self
+                                              or pacientes.eco_iao             = $self
+                                              or pacientes.eco_eao             = $self
+                                              or pacientes.eco_hap             = $self
+                                              or pacientes.eco_hve             = $self
+                                              or pacientes.eco_prolapso_mitral = $self
+                                              or pacientes.eco_bucuspide       = $self
+                                              or pacientes.cec                 = $self
+                                              or pacientes.pinc_aortico        = $self
+                                              or pacientes.corrente_les_transop = $self
+                                              or pacientes.patch_transop        = $self
+                                              or pacientes.rsaf_ada		        = $self	
+                                              or pacientes.rsaf_acd		        = $self	
+                                              or pacientes.rsaf_diagonalis       = $self	
+                                              or pacientes.rsaf_dg			      = $self
+                                              or pacientes.rsaf_dp			      = $self
+                                              or pacientes.rsaf_mg			      = $self
+                                              or pacientes.rsaf_pl			      = $self
+                                              or pacientes.revasc_mamaria	      = $self   
+                                              or pacientes.endart_coronaria	   = $self   
+                                              or pacientes.endart_carotida	      = $self   
+                                              or pacientes.revasc_incompleta 	   = $self   
+                                              or pacientes.transop_pcr		      = $self   
+                                              or pacientes.tr_op_cmp_fib_atrial	= $self   
+                                              or pacientes.tr_op_cmp_anafilaxia	= $self   
+                                              or pacientes.tr_op_cmp_bavt   		= $self   
+                                              or pacientes.tr_op_cmp_uso_bia		= $self   
+                                              or pacientes.tr_op_cmp_bradicard	= $self	   
+                                              or pacientes.tr_op_cmp_broncoesp	= $self	   
+                                              or pacientes.tr_op_cmp_choque		= $self      
+                                              or pacientes.tr_op_cmp_sangr_aum	= $self	   
+                                              or pacientes.tr_op_cmp_corr_lesao	= $self   
+                                              or pacientes.tr_op_cmp_dif_s_cec	= $self	   
+                                              or pacientes.tr_op_cmp_dsc_aorta	= $self	   
+                                              or pacientes.tr_op_cmp_fib_vent		= $self   
+                                              or pacientes.tr_op_cmp_perf_card	= $self	   
+                                              or pacientes.tr_op_cmp_hipot_sev	= $self      
+                                              or pacientes.posop_anemia		      = $self
+                                              or pacientes.posop_acfa		      = $self   
+                                              or pacientes.posop_avc			      = $self
+                                              or pacientes.posop_atelec		      = $self
+                                              or pacientes.posop_bavt		      = $self   
+                                              or pacientes.posop_bacteremia	   = $self   
+                                              or pacientes.posop_bia			      = $self
+                                              or pacientes.posop_baixo_debito	   = $self
+                                              or pacientes.posop_bloq_rad		   = $self
+                                              or pacientes.posop_bloq_rae		   = $self
+                                              or pacientes.posop_broncoespasmo	= $self	
+                                              or pacientes.posop_coma		      = $self   
+                                              or pacientes.posop_coagulopat	   = $self   
+                                              or pacientes.posop_choque		      = $self
+                                              or pacientes.posop_derr_pleural	   = $self
+                                              or pacientes.posop_dist_eletrol	   = $self
+                                              or pacientes.posop_dm_descomp	   = $self   
+                                              or pacientes.posop_dist_conduta	   = $self
+                                              or pacientes.posop_dren_aument	   = $self
+                                              or pacientes.posop_depressao	      = $self
+                                              or pacientes.posop_dr_vasoativa	   = $self
+                                              or pacientes.posop_enfis_subcut	   = $self
+                                              or pacientes.posop_embolia_perif	= $self   
+                                              or pacientes.posop_endocardite	   = $self
+                                              or pacientes.posop_hipertensao	   = $self
+                                              or pacientes.posop_hemodialise	   = $self
+                                              or pacientes.posop_hemor_digest	   = $self
+                                              or pacientes.posop_hemotorax	      = $self
+                                              or pacientes.posop_hipotao 		   = $self
+                                              or pacientes.posop_hipovolemia	   = $self
+                                              or pacientes.posop_hipoxemia	      = $self
+                                              or pacientes.posop_hipervolemia	   = $self
+                                              or pacientes.posop_infarto		   = $self   
+                                              or pacientes.posop_insuf_card	   = $self   
+                                              or pacientes.posop_ictericia	      = $self
+                                              or pacientes.posop_ileo_adinamico  = $self 
+                                              or pacientes.posop_intox_digital	= $self   
+                                              or pacientes.posop_infec_resp	   = $self   
+                                              or pacientes.posop_mediastinite	   = $self
+                                              or pacientes.posop_ira			      = $self
+                                              or pacientes.posop_les_plx_nerv	   = $self
+                                              or pacientes.posop_paaral_diafrag  = $self 
+                                              or pacientes.posop_pcr			      = $self
+                                              or pacientes.posop_pericardite	   = $self
+                                              or pacientes.posop_plaquetope	   = $self   
+                                              or pacientes.posop_pneumotorax	   = $self
+                                              or pacientes.posop_retorno_pocc	   = $self
+                                              or pacientes.posop_reinterv		   = $self
+                                              or pacientes.posop_reintub		   = $self   
+                                              or pacientes.posop_sangramento	   = $self
+                                              or pacientes.posop_sara	         = $self   
+                                              or pacientes.posop_sepse	         = $self
+                                              or pacientes.posop_swan_ganz	      = $self
+                                              or pacientes.posop_tamp_card	      = $self
+                                              or pacientes.posop_trombocitose	   = $self
+                                              or pacientes.posop_taqui_vent	   = $self   
+                                              or pacientes.posop_taqui_sup_vent  = $self 
+                                              or pacientes.posop_tromb_pulm	   = $self   
+                                              or pacientes.posop_vm_prolong	   = $self   
+                                              or pacientes.posop_sirs	         = $self   
+                                              or pacientes.posop_insuf_hepat	   = $self
+                                              or pacientes.posop_isq_mesenterica	= $self
+                                              or pacientes.posop_hipotermia 	   = $self
+                                              or pacientes.posop_s_pos_pericard	= $self
+                                              or pacientes.marcap_definitivo     = $self;
+}
+
+entity Sexo : managed {
+   key ID      : Integer;
+   text        : String;
+   pacientes   : Association to many Paciente on pacientes.sexo_masc = $self;
+}
+
+entity Obito : managed {
+   key ID      : Integer;
+   text       : String;
+   pacientes   : Association to many Paciente on pacientes.obito = $self;
+}
+
+entity LocalObito : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.local_obito = $self;
+}
+
+entity Convenio : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.convenio = $self;
+}
+
+entity MedicoAssistente : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.medico_assist = $self;
+}
+
+entity Procedencia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.procedencia = $self;
+}
+
+entity IdentificacaoCompleta : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.identificacao_complete = $self;
+}
+
+entity RevascularizaoMiocardica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tipo_cir_rm = $self;
+}
+
+entity CirurgiaValvar : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tipo_cir_valvar = $self;
+}
+
+entity InduficiaenciaAortica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.i_ao = $self;
+}
+
+entity InsuficienciaMitral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.i_mi = $self;
+}
+
+entity InsuficienciaTricuspide : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.i_tric = $self;
+}
+
+entity InsuficienciaPulmonar : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.i_pulm = $self;
+}
+
+entity EstenoseAortica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.e_ao = $self;
+}
+
+entity EstenoseMitral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.e_mi = $self;
+}
+
+entity EstenoseTricuspide : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.e_tric = $self;
+}
+
+entity EstenosePulmonar : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.e_pulm = $self;
+}
+
+
+entity CirurgiaEstrutural : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tipo_cir_estru = $self;
+}
+
+entity CIA : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cia = $self;
+}
+
+entity CIV : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.civ = $self;
+}
+
+entity FOP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.fop = $self;
+}
+entity PCA : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.pca = $self;
+}
+
+entity CoarctacaoAorta : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.coao = $self;
+}
+
+
+entity TetralogiaFallot : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.t_fallot = $self;
+}
+
+entity TumorIntracardiaco : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mixoma = $self;
+}
+
+entity Fibroelastoma : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.fibroelastoma = $self;
+}
+
+entity AneurismaAorta : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.aneurisma_aorta = $self;
+}
+
+entity AneurismaVE : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.aneurisma_ve = $self;
+}
+
+entity DoencasPericardio : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.derrame_pericardico = $self;
+}
+
+
+entity TromboIntracardiaco : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.trombo_cardiaco = $self;
+}
+
+entity CardiopatiaCongenita : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cardiopatia_cong = $self;
+}
+
+entity OutroTipoCirurgico : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tipo_cir_outro = $self;
+}
+
+entity DadosCirurgiaCompleto : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.dados_da_cirurgia_complete = $self;
+}
+
+entity Urgencia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.urgencia = $self;
+}
+
+entity ClasseAngina : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.classe_angina = $self;
+}
+
+
+entity ClasseNYHA : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.nyha = $self;
+}
+
+entity FibrilacaoAtrial : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_acfa = $self;
+}
+
+entity AngioplastiaCoronariana : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_actp = $self;
+}
+
+entity DoencaArterialPeriferica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_d_art_perif = $self;
+}
+
+entity Asma : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_asma = $self;
+}
+
+entity AcidenteVascularCerebralAit : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_avc = $self;
+}
+
+
+entity Alergia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_alergia = $self;
+}
+entity CirurgiaCardiacaPrevia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_cirug_card = $self;
+}
+entity HistoricoCoagulopatia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_coagulopat = $self;
+}
+entity DiabetesMellitus : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_dm = $self;
+}
+entity DoencaPeptica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_d_peptica = $self;
+}
+entity InfartoAgudoMiocardio : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_iam = $self;
+}
+entity InfartoAgudoMiocardioRecente : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_iam_recente = $self;
+}
+
+entity DoencaPulmonarCronica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_dpoc = $self;
+}
+entity Desnutricao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_desnutricao = $self;
+}
+entity Depressao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_depressao = $self;
+}
+entity EmboliaPulmonar : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_embolia_pulmonar = $self;
+}
+entity Endocardite : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_endocardite = $self;
+}
+entity Etilismo : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_etilismo = $self;
+}
+entity FebreReumatica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_febre_reumatica = $self;
+}
+
+
+entity HipertensaoArterialSistemica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_has = $self;
+}
+entity Hemodialise : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_hemodial = $self;
+}
+entity Hepatopatia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_hepatopatia = $self;
+}
+entity Infeccao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_infeccao = $self;
+}
+entity InsuficienciaRenalCronica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_irc = $self;
+}
+entity Neoplasia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_neoplasia = $self;
+}
+entity Obesidade : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_obesidade = $self;
+}
+
+entity Prostatismo : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_prostatismo = $self;
+}
+
+entity TabagismoAtivo : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_tabagismo = $self;
+}
+
+entity Tireoidopatia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_tireoidopatia = $self;
+}
+
+entity Transfusao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_transfusao = $self;
+}
+
+entity Varizes : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_varizes = $self;
+}
+
+entity Dislipidemia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_dislipidemia = $self;
+}
+
+
+
+entity Drogadicao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_drogadicao = $self;
+}
+
+entity HIVPositivo : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_hiv_positivo = $self;
+}
+entity MarcapassoHP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.hp_marcapasso = $self;
+}
+
+entity AntagonistaCalcioMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_antagonistaca = $self;
+}
+
+entity AntiagregantePlaquetarioMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_antiagr_plaq = $self;
+}
+entity AntiarritmicoMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_antiarritmico = $self;
+}
+entity CorticoideMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_corticoida = $self;
+}
+entity BetaBloqueadorMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_beta_bloqueador = $self;
+}
+
+entity DigoxinaMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_digoxina = $self;
+}
+
+entity DiureticoMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_diuretico = $self;
+}
+
+entity EstatinaMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_estatina = $self;
+}
+
+entity HipoglicemianteOralMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_hipoglic_oral = $self;
+}
+
+entity InibidorEcaMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_ieca = $self;
+}
+
+ 
+entity InsulinaMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_insulina = $self;
+}
+entity NitratoMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_nitrato = $self;
+}
+entity BalaoIntraAorticoMDP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.mdp_bia = $self;
+} 
+
+entity OutroMedicamentoP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.outro_medic = $self;
+}
+entity InternacaoCompleta : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.internacao_complete = $self;
+}
+entity ArteriaDescendenteAnterior : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_ada = $self;
+}
+entity ArteriaCircunflexa : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_acx = $self;
+} 
+
+entity ArteriaCoronariaDireita : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_acd = $self;
+}
+entity ArteriaDiagonalis : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_diagonalis = $self;
+}
+entity ArteriaDiagonal : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_dg = $self;
+}
+entity ArteriaDesdendentePosterior : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_dp = $self;
+}
+entity ArteriaMarginal : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_mg = $self;
+}
+entity TroncoCoronariaEsquerda : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_les_tce = $self;
+}
+entity CoronariasNormais : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_art_normais = $self;
+}
+
+
+entity InsuficienciaMitral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_imi = $self;
+}
+entity EstenoseMitral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_emi = $self;
+}
+entity InsuficienciaAortica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_iao = $self;
+}
+entity EstenoseAortica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_eao = $self;
+}
+entity HipertensaoArterialPulmonar : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_hap = $self;
+}
+entity InsuficienciaMitral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_imi = $self;
+}
+entity EstenoseMitral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_emi = $self;
+}
+
+ 
+ 
+
+entity InsufucienciaAortica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_iao = $self;
+}
+entity EstenoseAortica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_eao = $self;
+}
+entity HipertensaoPulmonarECO : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_hap = $self;
+}
+
+entity HipertrofiaVentriculoEsquerdoECO : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_hve = $self;
+}
+entity ProlapsoMitralECO : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_prolapso_mitral = $self;
+}
+entity ValvulaAorticaBicuspideECO : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.eco_bucuspide = $self;
+}
+
+
+entity CatEEcoCompletos : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cat_e_eco_complete = $self;
+}
+
+entity LabEEscoresCompletos : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.lab_e_escores_complete = $self;
+}
+
+entity UsoCirculacaoExtracorporea : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.cec = $self;
+}
+
+entity UsoPincamentoAortico : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.pinc_aortico = $self;
+}
+
+entity CorrenteLesaoTransoperatorio : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.corrente_les_transop = $self;
+}
+
+entity UsoPatchTransoperatorio : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.patch_transop = $self;
+}
+
+
+entity ArteriaDescendenteAnterior : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_ada = $self;
+}
+
+entity ArteriaCoronariaDireita : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_acd = $self;
+}
+
+entity ArteriaDiagonalis : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_diagonalis = $self;
+}
+
+entity ArteriaDiagonal : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_dg = $self;
+}
+
+entity ArteriaDescendentePosterior : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_dp = $self;
+}
+
+entity RevascArteriaMarginal : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_mg = $self;
+}
+
+
+
+entity ArteriaPosteroLateral : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.rsaf_pl = $self;
+}
+
+entity UsoMamaria : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.revasc_mamaria = $self;
+}
+
+entity TipoProteseValvar : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tipo_protese_valvar = $self;
+}
+
+entity EndarterectomiaCoronaria : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.endart_coronaria = $self;
+}
+
+entity EndarterectomiaCarotida : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.endart_carotida = $self;
+}
+
+entity RevascularizacaoIncompleta : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.revasc_incompleta = $self;
+}
+
+
+
+entity ParadaCardiorrespiratoriaTransoperatoriaTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.transop_pcr = $self;
+}
+entity FibrilacaoAtrialTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_fib_atrial = $self;
+}
+
+entity AnafilaxiaTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_anafilaxia = $self;
+}
+
+entity BAVTTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_bavt = $self;
+}
+
+entity BIATrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_uso_bia = $self;
+}
+
+entity BradicardiaTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_bradicard = $self;
+}
+
+
+
+
+entity BroncoespasmoTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_broncoesp = $self;
+}
+
+entity ChoqueTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_choque = $self;
+}
+
+entity SangramentoAumentadoTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_sangr_aum = $self;
+}
+
+entity CorrenteLesaoTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_corr_lesao = $self;
+}
+
+entity DificuldadeSairCEC : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_dif_s_cec = $self;
+}
+
+entity DisseccaoAortaTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_dsc_aorta = $self;
+}
+
+
+entity FibrilacaoVentricularTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_fib_vent = $self;
+}
+
+entity PerfuracaoCardiacaTrOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_perf_card = $self;
+}
+
+entity HipotensaoSeveraChoquerOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.tr_op_cmp_hipot_sev = $self;
+}
+
+entity PosOperatorioCompleto : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.transoperatotio_complete = $self;
+}
+
+entity AnemiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_anemia = $self;
+}
+
+entity FibrilacaoAtrialPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_acfa = $self;
+}
+
+
+
+entity AVCPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_avc = $self;
+}
+
+entity AtelectasiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_atelec = $self;
+}
+
+entity BloqueioAVTotalPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_bavt = $self;
+}
+
+entity BacteremiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_bacteremia = $self;
+}
+
+entity BIAPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_bia = $self;
+}
+
+entity BaixoDEbitoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_baixo_debito = $self;
+}
+
+
+
+entity BloqueioRamoDireitoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_bloq_rad = $self;
+}
+
+entity BloqueioRamoEsquerdoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_bloq_rae = $self;
+}
+
+entity BroncoespasmoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_broncoespasmo = $self;
+}
+
+entity ComaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_coma = $self;
+}
+
+entity CoagulopatiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_coagulopat = $self;
+}
+
+entity ChoquePosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_choque = $self;
+}
+
+
+
+entity DerramePleuralPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_derr_pleural = $self;
+}
+
+entity DisturbioHidroeletrolitico : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_dist_eletrol = $self;
+}
+
+entity DiabeteDescompensadoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_dm_descomp = $self;
+}
+
+entity DisturbioCondutaAgitacao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_dist_conduta = $self;
+}
+
+entity DrenagemAumentadaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_dren_aument = $self;
+}
+
+entity DepressaoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_depressao = $self;
+}
+
+
+
+entity UsoDrogaVasoativa : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_dr_vasoativa = $self;
+}
+
+entity EnfisemaSubcutaneoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_enfis_subcut = $self;
+}
+
+entity EmboliaPerifericaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_embolia_perif = $self;
+}
+
+entity EndocarditePosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_endocardite = $self;
+}
+
+entity HipertensaoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hipertensao = $self;
+}
+entity HemodialisePosOP : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hemodialise = $self;
+}
+
+
+
+
+entity HemorragiaDigestivaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hemor_digest = $self;
+}
+
+entity HemotoraxPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hemotorax = $self;
+}
+
+entity HipotensaoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hipotao = $self;
+}
+
+entity HipovolemiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hipovolemia = $self;
+}
+
+entity HipoxemiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hipoxemia = $self;
+}
+entity HipervolemiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hipervolemia = $self;
+}
+
+
+
+
+entity InfartoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_infarto = $self;
+}
+
+entity InsuficienciaCardiacaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_insuf_card = $self;
+}
+entity IctericiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_ictericia = $self;
+}
+
+entity IleoAdinamico : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_ileo_adinamico = $self;
+}
+
+entity IntoxicacaoDigitalica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_intox_digital = $self;
+}
+entity InfeccaoRespiratoriaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_infec_resp = $self;
+}
+
+
+
+
+
+entity InfeccaoFeridaOperatoria : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_mediastinite = $self;
+}
+
+entity InsuficienciaRenalPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_ira = $self;
+}
+entity LesaoPlexoNervoso : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_les_plx_nerv = $self;
+}
+
+entity ParalisiaDiafragmatica : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_paaral_diafrag = $self;
+}
+entity ParadaCardiorrespiratoriaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_pcr = $self;
+}
+
+entity PericarditePosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_pericardite = $self;
+}
+entity Plaquetopenia : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_plaquetope = $self;
+}
+
+entity Pneumotorax : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_pneumotorax = $self;
+}
+entity RetornoPocc : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_retorno_pocc = $self;
+}
+
+entity Reintervencao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_reinterv = $self;
+}
+entity Reintubacao : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_reintub = $self;
+}
+
+entity SangramentoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_sangramento = $self;
+}
+entity SindromeAngustiaRespiratoriaAguda : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_sara = $self;
+}
+
+
+
+
+entity Sepse : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_sepse = $self;
+}
+entity UsoSwanGanzPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_swan_ganz = $self;
+}
+
+entity TamponamentoCardiaco : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_tamp_card = $self;
+}
+entity Trombocitose : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_trombocitose = $self;
+}
+
+entity TaquicardiaVentricularPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_taqui_vent = $self;
+}
+entity TaquicardiaSupraventricularPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_taqui_sup_vent = $self;
+}
+
+entity TromboembolismoPulmonarPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_tromb_pulm = $self;
+}
+entity VentilacaoMecanicaProlongadaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_vm_prolong = $self;
+}
+
+entity SindromeRespostaInflamatoriaSistemicaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_sirs = $self;
+}
+entity InsuficienciaHepaticaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_insuf_hepat = $self;
+}
+
+entity IsquemiaMesentericaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_isq_mesenterica = $self;
+}
+entity HipotermiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_hipotermia = $self;
+}
+
+entity SindromePosPericardiotomiaPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.posop_s_pos_pericard = $self;
+}
+
+entity UsoMarcapassoDefinitivoPosOp : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.marcap_definitivo = $self;
+}
+
+entity DadosPosOpCompletos : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.pos_operatorio_complete = $self;
+}
+entity Microbio01 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.germe01 = $self;
+}
+
+entity Microbio02 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.germe02 = $self;
+}
+
+entity Microbio03 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.germe03 = $self;
+}
+
+entity Microbio04 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.germe04 = $self;
+}
+
+
+
+
+entity Microbio05 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.germe05 = $self;
+}
+
+entity Antimicrobiano01 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.antimicrobiano01 = $self;
+}
+
+entity Antimicrobiano02 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.antimicrobiano02 = $self;
+}
+
+entity Antimicrobiano03 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.antimicrobiano03 = $self;
+}
+
+entity Antimicrobiano04 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.antimicrobiano04 = $self;
+}
+
+entity Antimicrobiano05 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.antimicrobiano05 = $self;
+}
+
+
+
+entity Antimicrobiano06 : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.antimicrobiano06 = $self;
+}
+
+entity CulturaisCompletos : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.culturais_complete = $self;
+}
+
+entity xxx : managed {
+   key ID      : Integer;
+   text  : String;
+   pacientes   : Association to many Paciente on pacientes.xxxx = $self;
+}
